@@ -1,0 +1,15 @@
+class Config(object):
+    HOST = '127.0.0.1'
+    USER = 'user'
+    PASS = 'password'
+    DB_NAME = 'database_name'
+
+    MAX_ITEMS_TO_KEEP = 20  # how many top items to keep. For example if you have 100 000 products you will have 99 999
+                            # matches for each product. You can keep all or top items only
+
+    CHUNK_SIZE = 1000000    # The number of calculated couples to put into the top_items_q.
+                            # !!! Have in mind that for each Multiprocessing.Queue().put() the objects will be picked!!!
+                            # On the other hand generating long lists is time consuming too
+                            # Try which value is best for you.
+
+    GENERATE_CHUNKS_PROCESS_COUNT = 16  # yes you can use multiprocessing.cpu_count(). Feel free to do so if you want
